@@ -9,7 +9,7 @@ var runner = function()
 	var fc = $(".flex-container");
 	fc.html("");
 	var pag = getPag();
-	for(var i = 1 ; i++;i<pag.max+1)
+	for(var i = 1 ; i<pag.max+1;i++)
 	{
 		var frame = getFrame(pag.url+i);
 		var items = frame.find(".flex-container .flex-item");
