@@ -2,6 +2,7 @@
 //maybe later will be upgraded to an universal strandart
 var atmFilter = function(bean)
 {
+	//parseFloat(bean[3])>3
 	return true;
 };
 var runner = function()
@@ -19,7 +20,7 @@ var extractData = function(item){
 	var data = [];
 	$(item).find(".card-numbers .card-numbers-item").each(function() {
 		var texts = $(this).text().split(":");
-		var text = texts[texts.length()-1].trim();
+		var text = texts[texts.length-1].trim();
 		data.push(text);
 	});
 	return data;
