@@ -12,7 +12,11 @@ var runner = function()
 	items.each(function(  ) {
 		if(!atmFilter(extractData(this)))
 		{
+			console.log("remove");
 			this.remove();
+		}
+		else{
+			console.log("removeno");
 		}
 	});
 };
