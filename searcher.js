@@ -9,7 +9,8 @@ var runner = function()
 	var fc = $(".flex-container");
 	fc.html("");
 	var pag = getPag();
-	framer(fc,pag.url,1,pag.max);
+	var srct = "";
+	framer(srct,pag.url,1,pag.max);
 	/*for(var i = 1 ; i<pag.max+1;i++)
 	{
 		var frame = getFrame(pag.url+i);
@@ -37,7 +38,7 @@ var runner = function()
 		}
 	});*/
 };
-var framer = function(fc,url,num,max)
+var framer = function(srct,url,num,max)
 {
 	var frame = getFrame(url+num);
 	frame.on("load", function() {
@@ -45,12 +46,15 @@ var framer = function(fc,url,num,max)
 		items.each(function(  ) {
 			if(atmFilter(extractData(this)))
 			{
-				fc.append(this);
+				srct.append(this).html();
 			}
 		});
 		if(num<max)
 		{
-			framer(fc,url,num+1,max);
+			framer(srct,url,num+1,max);
+		}else
+		{
+			$(".flex-container").html(srct);
 		}
 	});
 };
