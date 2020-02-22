@@ -6,7 +6,17 @@ var atmFilter = function(bean)
 };
 var runner = function()
 {
-	var items = $(".flex-container .flex-item");
+	var fc = $(".flex-container");
+	fc.html("");
+	var page = getPag;
+	for(var i = 1 ; i++;i<page.max+1)
+	{
+		var frame = getFrame(page.url+i);
+		var items = frame.find(".flex-container .flex-item");
+		console.log(items);
+	}
+
+	/*var items = $(".flex-container .flex-item");
 
 	items.each(function(  ) {
 		if(!atmFilter(extractData(this)))
@@ -17,7 +27,7 @@ var runner = function()
 		else{
 			console.log("removeno");
 		}
-	});
+	});*/
 };
 var extractData = function(item){
 	var data = [];
@@ -27,4 +37,30 @@ var extractData = function(item){
 		data.push(text);
 	});
 	return data;
+};
+var getFrame = function(url){
+	var iframe = {};
+	if(!!$("#miframe").length)
+		iframe = $("#miframe");
+	else
+	{
+		var iframe = $('<iframe />', {
+                        name: 'frame1',
+                        id: 'miframe',
+                    }).appendTo('body');
+	}
+	if (iframe.length ) {
+        iframe.attr('src',"https://www.google.com");   
+    }
+    return iframe;
+	
+};
+var getPag = function(){
+	var resp = {};
+	var pages = $(".pagination .page-item a");
+	resp.url = pages[0].href;
+	resp.url = resp.url.substring(0, resp.url.length - 1);
+	var m = pages[pages.length-2];
+	resp.max = parseInt(m.substring(m.lastIndexOf("=")+1));
+	return resp;
 };
