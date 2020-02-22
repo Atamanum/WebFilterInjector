@@ -46,7 +46,7 @@ var framer = function(srct,url,num,max)
 		items.each(function(  ) {
 			if(atmFilter(extractData(this)))
 			{
-				srct = srct +this.html();
+				srct = srct +$(this).html();
 			}
 		});
 		if(num<max)
