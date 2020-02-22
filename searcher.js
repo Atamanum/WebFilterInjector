@@ -11,9 +11,13 @@ var runner = function()
 	var pag = getPag();
 	for(var i = 1 ; i<pag.max+1;i++)
 	{
+
 		var frame = getFrame(pag.url+i);
-		var items = frame.find(".flex-container .flex-item");
-		console.log(items);
+		frame.on("load", function() {
+		   var items = frame.contents().find(".flex-container .flex-item");
+			console.log(items);
+		});
+		
 	}
 
 	/*var items = $(".flex-container .flex-item");
@@ -50,7 +54,7 @@ var getFrame = function(url){
                     }).appendTo('body');
 	}
 	if (iframe.length ) {
-        iframe.attr('src',"https://www.google.com");   
+        iframe.attr('src',url);   
     }
     return iframe;
 	
