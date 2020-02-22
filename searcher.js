@@ -9,16 +9,20 @@ var runner = function()
 	var fc = $(".flex-container");
 	fc.html("");
 	var pag = getPag();
-	for(var i = 1 ; i<pag.max+1;i++)
+	framer(pag.url,1,pag.max);
+	/*for(var i = 1 ; i<pag.max+1;i++)
 	{
-
 		var frame = getFrame(pag.url+i);
 		frame.on("load", function() {
 		   var items = frame.contents().find(".flex-container .flex-item");
-			console.log(items);
+			items.each(function(  ) {
+				if(atmFilter(extractData(this)))
+				{
+					fc.append(this);
+				}
+			});
 		});
-		
-	}
+	}*/
 
 	/*var items = $(".flex-container .flex-item");
 
@@ -32,6 +36,23 @@ var runner = function()
 			console.log("removeno");
 		}
 	});*/
+};
+var framer = function(url,num,max)
+{
+	var frame = getFrame(pag.url+num);
+	frame.on("load", function() {
+	   var items = frame.contents().find(".flex-container .flex-item");
+		items.each(function(  ) {
+			if(atmFilter(extractData(this)))
+			{
+				fc.append(this);
+			}
+		});
+		if(num<max)
+		{
+			framer(url,num+1,max);
+		}
+	});
 };
 var extractData = function(item){
 	var data = [];
