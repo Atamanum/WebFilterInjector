@@ -8,7 +8,7 @@ var runner = function()
 {
 	var fc = $(".flex-container");
 	fc.html("");
-	var page = getPag;
+	var pag = getPag();
 	for(var i = 1 ; i++;i<page.max+1)
 	{
 		var frame = getFrame(page.url+i);
@@ -60,7 +60,7 @@ var getPag = function(){
 	var pages = $(".pagination .page-item a");
 	resp.url = pages[0].href;
 	resp.url = resp.url.substring(0, resp.url.length - 1);
-	var m = pages[pages.length-2];
+	var m = pages[pages.length-2].href;
 	resp.max = parseInt(m.substring(m.lastIndexOf("=")+1));
 	return resp;
 };
