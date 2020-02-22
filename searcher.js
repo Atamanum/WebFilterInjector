@@ -9,7 +9,7 @@ var runner = function()
 	var fc = $(".flex-container");
 	fc.html("");
 	var pag = getPag();
-	framer(pag.url,1,pag.max);
+	framer(fc,pag.url,1,pag.max);
 	/*for(var i = 1 ; i<pag.max+1;i++)
 	{
 		var frame = getFrame(pag.url+i);
@@ -37,9 +37,9 @@ var runner = function()
 		}
 	});*/
 };
-var framer = function(url,num,max)
+var framer = function(fc,url,num,max)
 {
-	var frame = getFrame(pag.url+num);
+	var frame = getFrame(url+num);
 	frame.on("load", function() {
 	   var items = frame.contents().find(".flex-container .flex-item");
 		items.each(function(  ) {
