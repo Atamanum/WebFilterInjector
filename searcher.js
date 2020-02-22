@@ -2,7 +2,7 @@
 //maybe later will be upgraded to an universal strandart
 var atmFilter = function(bean)
 {
-	return parseFloat(bean[3])>3;
+	return parseFloat(bean[2])>3;
 };
 var runner = function()
 {
